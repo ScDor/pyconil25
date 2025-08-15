@@ -1,5 +1,3 @@
- ---
-
 ## Collections: defaultdict
 
 <v-clicks>

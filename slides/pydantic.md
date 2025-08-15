@@ -1,5 +1,3 @@
----
-
 ## Pydantic Settings
 
 ```python

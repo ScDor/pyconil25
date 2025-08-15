@@ -1,5 +1,3 @@
----
-
 ## Formatting String Modifiers
 <v-clicks>
 ```python

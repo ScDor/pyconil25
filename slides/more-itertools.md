@@ -1,5 +1,3 @@
----
-
 ## More-itertools: one
 
 <v-clicks>

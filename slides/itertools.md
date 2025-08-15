@@ -1,5 +1,3 @@
----
-    
 ## Itertools: cycle
 
 ```python
