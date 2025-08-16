@@ -17,8 +17,6 @@ Dependency weight: deps bring install size, cold starts, license risks, CVEs.
 
 Stability: API churn, long-term maintainability, and whether the team still understands it years later.
 
-Performance: Hot loops example. Helpers can add overhead in critical paths. Outside hot loops, fine.  
-
 When Magic Backfires: Silent default behaviors, testability (the more magic)
 
 Portability: Mention version support, typing, different OS issues. 

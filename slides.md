@@ -23,14 +23,11 @@ colorSchema: light
 Dor Schwartz @ PyCon Israel 2025
 
 ---
-src: ./slides/formatting.md
+src: ./slides/pathlib.md
 ---
 ---
 src: ./slides/more-itertools.md
 --- 
----
-src: ./slides/pathlib.md
----
 ---
 src: ./slides/pydantic.md
 ---
