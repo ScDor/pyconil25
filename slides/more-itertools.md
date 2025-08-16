@@ -1,43 +1,40 @@
 # More-itertools: one
 
-Goal: assert there is exactly one item
+Assert there is exactly one item, and get its value
 
+```python
+items = [42]
 ```
-Input: [42]
-```
-
 <v-clicks>
 
 ````md magic-move
 
 ```python
-items = [42]
 if len(items) != 1:
     raise ValueError("Expected exactly one item")
-item = items[0]
-print(item)
-```
 
+print(items[0])
+```
 ```python
 from more_itertools import one
-print(one([42]))
+print(one(items)) # can customize exception on too_few/too_many
 ```
 ````
 
 </v-clicks>
 
 ```
-Output: 42
+42
 ```
 
 ---
 
 # More-itertools: map_reduce
 
-Goal: group items by an uppercase key
+group items by an uppercase key
 
-```
-Input: "abbccc"
+```python
+items = "abbccc"
 ```
 
 <v-clicks>
@@ -45,143 +42,140 @@ Input: "abbccc"
 ````md magic-move
 
 ```python
-from collections import defaultdict
+grouped = dict()
 
-grouped = defaultdict(list)
-for item in "abbccc":
-    grouped[item.upper()].append(item)
-print(dict(grouped))
+for item in items:
+    key = item.upper()
+    if key in grouped:
+        grouped[key].append(item)
+    else:
+        grouped[key] = [item]
+
 ```
 
 ```python
+from collections import defaultdict
+
+grouped = defaultdict(list)
+
+for item in items:
+    grouped[item.upper()].append(item)
+```
+```python
 from more_itertools import map_reduce
-print(map_reduce("abbccc", keyfunc=str.upper))
+grouped = map_reduce(items, keyfunc=str.upper)
 ```
 ````
 
 </v-clicks>
 
-```
-Output: {'A': ['a'], 'B': ['b', 'b'], 'C': ['c', 'c', 'c']}
+```python
+print(dict(grouped))
+>>> {'A': ['a'], 'B': ['b', 'b'], 'C': ['c', 'c', 'c']}
 ```
 
 ---
 
 # More-itertools: always_iterable
 
-Goal: iterate over a single value or list uniformly
-
-```
-Input: "alice", ["bob", "carol"], None
-```
+iterate over a single value or list uniformly
 
 <v-clicks>
 
 ````md magic-move
 
 ```python
-def greet(users):
+def greet(users: str | Iterable[str] | None):
     if users is None:
         return
+
     if isinstance(users, str):
         users = [users]
-    for u in users:
-        print(f"Hello {u}")
 
-greet("alice")
-greet(["bob","carol"])
-greet(None)
+    for user in users:
+        print(f"Hello {user}")
 ```
 
 ```python
 from more_itertools import always_iterable
 
-def greet(users):
-    for u in always_iterable(users, base_type=str):
-        print(f"Hello {u}")
-
-greet("alice")
-greet(["bob","carol"])
-greet(None)
+def greet(users: str | Iterable[str] | None):
+    for user in always_iterable(users):
+        print(f"Hello {user}")
 ```
 ````
 
 </v-clicks>
 
-```
-Output:
-Hello alice
-Hello bob
-Hello carol
+```python
+greet("Alice")
+greet(["Bob","Carol"])
+greet(None)
+
+>>> Hello Alice
+>>> Hello Bob
+>>> Hello Carol
 ```
 
 ---
 
 # More-itertools: chunked
 
-Goal: split an iterable into fixed-size chunks
-
-```
-Input: range(7), size=3
-```
+split an iterable into fixed-size chunks
 
 <v-clicks>
 
 ````md magic-move
 
 ```python
-data = list(range(7))
-size = 3
-chunks = [data[i:i+size] for i in range(0, len(data), size)]
-print(chunks)
+def chunk_things(iterable: list[int], chunk_size:int) -> list[int]:
+    return [data[i : i + chunk_size] for i in range(0, len(data), chunk_size)]
 ```
+
 
 ```python
 from more_itertools import chunked
-print(list(chunked(range(7), 3)))
+list(chunked(range(7), 3))
 ```
 ````
 
 </v-clicks>
 
-```
-Output: [[0, 1, 2], [3, 4, 5], [6]]
+```python
+chunk_things(range(7), 3)
+>>> [[0, 1, 2], [3, 4, 5], [6]]
 ```
 
 ---
 
 # More-itertools: partition
 
-Goal: partition an iterable by a predicate
+partition an iterable by a predicate
 
+```python
+numbers = range(10)
 ```
-Input: range(10)
-```
-
 <v-clicks>
 
 ````md magic-move
 
 ```python
-data = list(range(10))
+data = list(numbers)
 odds = [x for x in data if x % 2]
 evens = [x for x in data if not x % 2]
-print(odds)
-print(evens)
 ```
 
 ```python
 from more_itertools import partition
-odds, evens = partition(lambda x: x % 2, range(10))
-print(list(odds))
-print(list(evens))
+odds, evens = partition(lambda x: x % 2, numbers)
 ```
 ````
 
 </v-clicks>
 
-```
-Output:
+```python
+print(odds)
+print(evens)
 [1, 3, 5, 7, 9]
 [0, 2, 4, 6, 8]
 ```

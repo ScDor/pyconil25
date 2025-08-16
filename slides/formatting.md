@@ -1,6 +1,6 @@
 # Humanize
 
-Goal: display human-readable relative time
+display human-readable relative time
 
 ```
 Input: now - 90 seconds
@@ -43,7 +43,7 @@ Output: a minute ago
 
 # Unidecode
 
-Goal: transliterate accented characters to ASCII
+transliterate accented characters to ASCII
 
 ```
 Input: àéîõü
@@ -75,7 +75,7 @@ Output: aeiou
 
 # Inflect
 
-Goal: pluralize words and generate ordinals
+pluralize words and generate ordinals
 
 ```
 Input: file, 7, 10 

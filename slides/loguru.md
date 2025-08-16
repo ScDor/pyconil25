@@ -1,6 +1,6 @@
 # Loguru
 
-Goal: write logs to a file with minimal setup
+write logs to a file with minimal setup
 
 <v-clicks>
 
@@ -33,7 +33,7 @@ Outcome: Logs written to app.log
 
 # Loguru: Advanced
 
-Goal: multi-sink logs, rotation, and exceptions with minimal setup
+multi-sink logs, rotation, and exceptions with minimal setup
 
 
 <v-clicks>

@@ -1,6 +1,6 @@
 # Questionary
 
-Goal: prompt the user to select an option
+prompt the user to select an option
 
 ```
 Input: Choose a color [red/blue/green]

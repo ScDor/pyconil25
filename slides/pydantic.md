@@ -1,22 +1,17 @@
 
 # Pydantic Settings
 
-Goal: load settings from environment variables with types
-
-```
-Inputs:
-APP_NAME=Demo DEBUG=1 PORT=8000 ALLOWED_HOSTS='["a.com","b.com"]' API_KEY=secret
-```
+load settings from environment variables with types
 
 <v-clicks>
 
 ````md magic-move
 
-```python
+```python{|4|5|6|10}
 import os, json
 
 APP_NAME = os.getenv("APP_NAME", "UNKNOWN APP")
-DEBUG = os.getenv("DEBUG", "false").lower() in ("1","true","yes","y")
+DEBUG = os.getenv("DEBUG", "").lower() in ("1","true","yes","y")
 PORT = int(os.getenv("PORT", "8000"))
 ALLOWED_HOSTS = json.loads(os.getenv("ALLOWED_HOSTS", "[]"))
 API_KEY = os.getenv("API_KEY", "")
@@ -24,7 +19,7 @@ API_KEY = os.getenv("API_KEY", "")
 print(APP_NAME, f"port={PORT}", f"debug={DEBUG}", f"hosts={ALLOWED_HOSTS}",
       '**********' if API_KEY else '')
 ```
-```python
+```python{4|5|7|10}
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr
 
@@ -34,7 +29,7 @@ class Settings(BaseSettings):
     debug: bool = False
     port: int = 8000
     allowed_hosts: list[str] = []
-    api_key: SecretStr = SecretStr("")
+    api_key: SecretStr
 
 s = Settings()
 print(s.app_name, f"port={s.port}", f"debug={s.debug}", f"hosts={s.allowed_hosts}", 
@@ -43,22 +38,18 @@ print(s.app_name, f"port={s.port}", f"debug={s.debug}", f"hosts={s.allowed_hosts
 ````
 </v-clicks>
 
-```
-Output:
-Demo port=8000 debug=True hosts=['a.com', 'b.com'] api_key=**********
-```
 
 ---
 
 # Pydantic Settings: pyproject.toml
 
-Goal: use builtin pyproject parsing; env/.env overrides
+use builtin pyproject parsing; env/.env overrides
 
 <v-clicks>
 
 ````md magic-move
 
-```python
+```python{|5|6}
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
@@ -77,7 +68,3 @@ print(s.app_name, s.port, s.debug)
 
 </v-clicks>
 
-```
-Output:
-My app 9000 True
-```

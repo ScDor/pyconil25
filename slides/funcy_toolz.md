@@ -1,6 +1,6 @@
 # Funcy / Toolz
 
-Goal: compose simple string transforms
+compose simple string transforms
 
 ```
 Input: " Hello "
@@ -31,7 +31,7 @@ Output: hello
 
 ---
 
-Goal: create a pre-filled function (partial application)
+create a pre-filled function (partial application)
 
 ```
 Input: add5(10)

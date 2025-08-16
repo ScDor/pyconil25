@@ -1,25 +1,23 @@
 # Pathlib
 
-Goal: inspect file parts and build a path
+inspect file parts and build a path
 
-```
-Inputs: file=/home/user/docs/report.pdf, folder=/home/user
+```python
+my_file = "/home/user/docs/report.pdf"
+folder = "/home/user"
 ```
 
 ````md magic-move
 
-```python
+```python{|3|3,4|5|8|}
 import os
 
-filepath = "/home/user/docs/report.pdf"
-filename = os.path.basename(filepath)
+filename = os.path.basename(my_file)
 stem, ext = os.path.splitext(filename)
-parent = os.path.dirname(filepath)
-
+parent = os.path.dirname(my_file)
 print(filename, stem, ext, parent)
 
-folder = "/home/user"
-full_path = os.path.join(folder, "docs", "report.pdf")
+full_path = os.path.join(folder, "docs", "other_report.pdf")
 print(full_path)
 ```
 
@@ -27,16 +25,14 @@ print(full_path)
 ```python
 from pathlib import Path
 
-file = Path("/home/user/docs/report.pdf")
+path = Path(my_file)
+print(path.name, path.stem, path.suffix, path.parent)
 
-print(file.name, file.stem, file.suffix, file.parent)
-
-folder = Path("/home/user")
-print(folder / "docs" / "report.pdf")
+other_path = Path(folder) / "docs" / "other_report.pdf"
+print(str(other_path))
 ```
 ````
 
-```
-Output:
-report.pdf    report      .pdf      /home/user/docs      /home/user/docs/report.pdf
+```python
+report.pdf    report    .pdf    /home/user/docs    /home/user/docs/other_report.pdf
 ```
