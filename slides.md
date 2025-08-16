@@ -23,8 +23,11 @@ colorSchema: light
 Dor Schwartz @ PyCon Israel 2025
 
 ---
-src: ./slides/more-itertools.md
+src: ./slides/formatting.md
 ---
+---
+src: ./slides/more-itertools.md
+--- 
 ---
 src: ./slides/pathlib.md
 ---
@@ -35,17 +38,8 @@ src: ./slides/pydantic.md
 src: ./slides/boltons.md
 ---
 ---
-src: ./slides/funcy_toolz.md
----
----
-src: ./slides/formatting.md
----
----
 src: ./slides/loguru.md
 ---
 ---
-src: ./slides/formatting.md
----
----
-src: ./slides/questionary.md
+src: ./slides/considerations.md
 ---
