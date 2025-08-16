@@ -1,6 +1,6 @@
 # Loguru
 
-write logs to a file with minimal setup
+multi-sink logs, rotation, and exceptions with minimal setup
 
 <v-clicks>
 
@@ -14,33 +14,7 @@ logging.info("This is info")
 logging.error("This is an error")
 ```
 
-```python
-from loguru import logger
-
-logger.add("app.log")
-logger.info("This is info")
-logger.error("This is an error")
-```
-````
-
-</v-clicks>
-
-```
-Outcome: Logs written to app.log
-```
-
----
-
-# Loguru: Advanced
-
-multi-sink logs, rotation, and exceptions with minimal setup
-
-
-<v-clicks>
-
-````md magic-move
-
-```python
+```python{|7|9-15|17-20|22}
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
@@ -75,7 +49,7 @@ logger.add("app.log", rotation="00:00", retention="7 days", encoding="utf-8")
 
 @logger.catch  # auto-captures and logs exceptions with traceback
 def main():
-    logger.bind(user="alice").info("Hello world")  # structured context
+    logger.info("Hello world")
     raise ValueError("Boom")
 
 main()

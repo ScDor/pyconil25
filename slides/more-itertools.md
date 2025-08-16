@@ -17,11 +17,14 @@ print(items[0])
 ```
 ```python
 from more_itertools import one
-print(one(items)) # can customize exception on too_few/too_many
+print(one(items))
 ```
 ````
-
 </v-clicks>
+<!-- 
+exception for too many/little are customizable.
+good in tests 
+ -->
 
 ```
 42
@@ -74,6 +77,8 @@ print(dict(grouped))
 >>> {'A': ['a'], 'B': ['b', 'b'], 'C': ['c', 'c', 'c']}
 ```
 
+<!-- here we see the tradeoff, may take a moment to understand always_iterable, but if the team adapts, everybody wins -->
+
 ---
 
 # More-itertools: always_iterable
@@ -120,7 +125,7 @@ greet(None)
 ---
 
 # More-itertools: chunked
-
+<!-- a common example for snippets from GPT/StackOverflow -->
 split an iterable into fixed-size chunks
 
 <v-clicks>
@@ -128,7 +133,7 @@ split an iterable into fixed-size chunks
 ````md magic-move
 
 ```python
-def chunk_things(iterable: list[int], chunk_size:int) -> list[int]:
+def chunk_things(iterable: list[int], chunk_size: int) -> list[int]:
     return [data[i : i + chunk_size] for i in range(0, len(data), chunk_size)]
 ```
 

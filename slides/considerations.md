@@ -1,7 +1,8 @@
-# Trade-offs
+# Considerations
+
 <v-clicks>
-- **Performance**
-- **Dependency cost** - size, speed, security, license, overlap
+
+- **Dependency cost** - Size, speed, security, license, overlap
 - **Stability** - Churn vs maintain
 - **When Magic Backfires** - With great power
 - **Understandability** - The bus factor

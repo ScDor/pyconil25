@@ -19,17 +19,17 @@ API_KEY = os.getenv("API_KEY", "")
 print(APP_NAME, f"port={PORT}", f"debug={DEBUG}", f"hosts={ALLOWED_HOSTS}",
       '**********' if API_KEY else '')
 ```
-```python{4|5|7|10}
+```python{4|7|9|10|}
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env")  # loads .env too
     app_name: str = "UNKNOWN APP"
     debug: bool = False
     port: int = 8000
     allowed_hosts: list[str] = []
     api_key: SecretStr
+    model_config = SettingsConfigDict(env_file=".env")  # optional!
 
 s = Settings()
 print(s.app_name, f"port={s.port}", f"debug={s.debug}", f"hosts={s.allowed_hosts}", 
