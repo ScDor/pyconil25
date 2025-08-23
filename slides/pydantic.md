@@ -19,7 +19,7 @@ print(f"port={PORT}", f"debug={DEBUG}",
       f"hosts={ALLOWED_HOSTS}", 
       "api_key=" + "**********" if API_KEY else "")
 ```
-```python{4|7|9|10|}
+```python{4|7|9|11}
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr
 
