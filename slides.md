@@ -23,6 +23,9 @@ colorSchema: light
 Dor Schwartz @ PyCon Israel 2025
 
 ---
+src: ./slides/mindset.md
+---
+---
 src: ./slides/pathlib.md
 ---
 ---
