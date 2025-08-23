@@ -13,8 +13,8 @@
 </v-clicks>
 
 <!--
-Fewer lines, fewer surprises, bugs
-Compose from small, tested parts
+Fewer lines but more important fewer surprises, bugs. Python concept
+Compose from small, tested parts, improve code without having to write more
 Lower surface area, easier life
 Stable, supported, fewer footguns overall
 Clarity over cleverness, always everywhere
