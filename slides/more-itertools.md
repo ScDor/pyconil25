@@ -1,5 +1,6 @@
 # More-itertools: one
 
+<!-- We won't cover excellent itertools today, but its extension -->
 Assert there is exactly one item, and get its value
 
 ```python
