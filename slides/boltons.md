@@ -1,8 +1,6 @@
 ---
 
-# Boltons: `bytes2human`
-
-format bytes into a human-readable string
+# Don't interview-question-code your prod
 
 ```
 Input: 12345678

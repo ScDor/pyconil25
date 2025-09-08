@@ -1,7 +1,40 @@
 
-# Pydantic Settings
+# Type Hints That Actually Do Something 
 
-load settings from environment variables with types
+<v-clicks>
+
+````md magic-move
+
+```python{1|2-3|4-5|6-7|8|10|}
+def create_user(name: Any, age: Any, email: Any) -> dict:
+    if not isinstance(name, str):
+        raise ValueError("name must be string")
+    if not isinstance(age, int):
+        raise ValueError("age must be int")
+    if "@" not in email:
+        raise ValueError("invalid email")
+    return {"name": name, "age": age, "email": email}
+
+user = create_user("Alice", 25, "alice@example.com")
+```
+```python{3-6|8-9}
+from pydantic import BaseModel, EmailStr
+
+class User(BaseModel):
+    name: str
+    age: int
+    email: EmailStr
+
+user = User(name="Alice", age="25", email="alice@example.com")
+print(user.age, type(user.age))  # 25 <class 'int'>
+```
+````
+
+</v-clicks>
+
+---
+
+# Env Vars: Now With 100% Less String Parsing Hell
 
 <v-clicks>
 
@@ -19,7 +52,7 @@ print(f"port={PORT}", f"debug={DEBUG}",
       f"hosts={ALLOWED_HOSTS}", 
       "api_key=" + "**********" if API_KEY else "")
 ```
-```python{4|7|9|11}
+```python{4-9|7|9|11}
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import SecretStr
 

@@ -1,6 +1,4 @@
-# Pathlib
-
-inspect file parts and build a path
+# Stringy paths are so 2013
 
 ```python
 my_file = "/home/user/docs/report.pdf"

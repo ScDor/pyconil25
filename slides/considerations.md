@@ -5,9 +5,8 @@
 - **Understandability** - The bus factor
 - **When `stdlib` wins** - Keep it simple & stupid (sometimes)
 
-- **Dependency cost** - Size, speed, security, license, overlap
-- **Stability** - Churn vs maintain
-- **When Magic Backfires** - With great power
+- **Dependency cost** - Size, speed, security, license, overlap, breaking changes
+- **When Magic Backfires** - With great power--
 - **Extensibility** - Escape hatches
 </v-clicks>
 

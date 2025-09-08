@@ -38,8 +38,5 @@ src: ./slides/pydantic.md
 src: ./slides/boltons.md
 ---
 ---
-src: ./slides/loguru.md
----
----
 src: ./slides/considerations.md
 ---

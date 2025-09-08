@@ -1,44 +1,41 @@
-# More-itertools: one
+---
+
+
+# Bite-sized data
 
 <!-- We won't cover excellent itertools today, but its extension -->
-Assert there is exactly one item, and get its value
+<!-- a common example for snippets from GPT/StackOverflow -->
 
-```python
-items = [42]
-```
 <v-clicks>
 
 ````md magic-move
 
 ```python
-if len(items) != 1:
-    raise ValueError("Expected exactly one item")
-
-print(items[0])
+def chunk_things(iterable: list[int], chunk_size: int) -> list[int]:
+    return [data[i : i + chunk_size] for i in range(0, len(data), chunk_size)]
 ```
+
+
 ```python
-from more_itertools import one
-print(one(items))
+from more_itertools import chunked
+
+list(chunked(range(7), 3))
 ```
 ````
-</v-clicks>
-<!-- 
-exception for too many/little are customizable.
-good in tests 
- -->
 
-```
-42
+</v-clicks>
+
+```python
+chunk_things(range(7), 3)
+>>> [[0, 1, 2], [3, 4, 5], [6]]
 ```
 
 ---
 
-# More-itertools: map_reduce
-
-group items by an uppercase key
+# Group(ing) Therapy
 
 ```python
-items = "abbccc"
+numbers = range(6)
 ```
 
 <v-clicks>
@@ -48,12 +45,12 @@ items = "abbccc"
 ```python
 grouped = dict()
 
-for item in items:
-    key = item.upper()
+for num in numbers:
+    key = num % 3
     if key in grouped:
-        grouped[key].append(item)
+        grouped[key].append(num)
     else:
-        grouped[key] = [item]
+        grouped[key] = [num]
 
 ```
 
@@ -62,29 +59,35 @@ from collections import defaultdict
 
 grouped = defaultdict(list)
 
-for item in items:
-    grouped[item.upper()].append(item)
+for num in numbers:
+    grouped[num % 3].append(num)
 ```
 ```python
 from more_itertools import map_reduce
-grouped = map_reduce(items, keyfunc=str.upper)
+grouped = map_reduce(numbers, keyfunc=lambda num: num % 3)
 ```
 ````
-
 </v-clicks>
 
 ```python
 print(dict(grouped))
->>> {'A': ['a'], 'B': ['b', 'b'], 'C': ['c', 'c', 'c']}
+>>> {
+        0: [0, 3],
+        1: [1, 4],
+        2: [2, 5]
+    }
 ```
 
-<!-- here we see the tradeoff, may take a moment to understand always_iterable, but if the team adapts, everybody wins -->
 
 ---
 
-# More-itertools: always_iterable
+# You're an iterable, Harry
 
-iterate over a single value or list uniformly
+<!--
+here we see the tradeoff, may take a moment to understand always_iterable, but if the team adapts, everybody wins.
+Saving the headache of edge cases
+-->
+
 
 <v-clicks>
 
@@ -95,7 +98,7 @@ def greet(users: str | Iterable[str] | None):
     if users is None:
         return
 
-    if isinstance(users, str):
+    if not isinstance(users, list):
         users = [users]
 
     for user in users:
@@ -121,67 +124,4 @@ greet(None)
 >>> Hello Alice
 >>> Hello Bob
 >>> Hello Carol
-```
-
----
-
-# More-itertools: chunked
-<!-- a common example for snippets from GPT/StackOverflow -->
-split an iterable into fixed-size chunks
-
-<v-clicks>
-
-````md magic-move
-
-```python
-def chunk_things(iterable: list[int], chunk_size: int) -> list[int]:
-    return [data[i : i + chunk_size] for i in range(0, len(data), chunk_size)]
-```
-
-
-```python
-from more_itertools import chunked
-list(chunked(range(7), 3))
-```
-````
-
-</v-clicks>
-
-```python
-chunk_things(range(7), 3)
->>> [[0, 1, 2], [3, 4, 5], [6]]
-```
-
----
-
-# More-itertools: partition
-
-partition an iterable by a predicate
-
-```python
-numbers = range(10)
-```
-<v-clicks>
-
-````md magic-move
-
-```python
-data = list(numbers)
-odds = [x for x in data if x % 2]
-evens = [x for x in data if not x % 2]
-```
-
-```python
-from more_itertools import partition
-odds, evens = partition(lambda x: x % 2, numbers)
-```
-````
-
-</v-clicks>
-
-```python
-print(odds)
-print(evens)
-[1, 3, 5, 7, 9]
-[0, 2, 4, 6, 8]
 ```
