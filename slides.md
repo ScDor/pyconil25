@@ -41,6 +41,30 @@ src: ./slides/boltons.md
 src: ./slides/considerations.md
 ---
 ---
+layout: two-cols
+zoom: 1.5
+---
+
+stdlib
+
+- pathlib
+- Collections
+- _itertools_
+
+::right::
+
+3rd party
+
+- more_itertools 
+- Boltons
+- Pydantic
+- Pydantic_settings 
+- _Typer (CLI)_
+- _Loguru (logging)_
+
+Always search for more! ✨
+
+---
 layout: cover
 background: https://i.ibb.co/khMnPgg/killarney.jpg
 ---
