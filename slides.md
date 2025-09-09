@@ -48,7 +48,7 @@ zoom: 1.5
 stdlib
 
 - pathlib
-- Collections
+- collections
 - _itertools_
 
 ::right::
