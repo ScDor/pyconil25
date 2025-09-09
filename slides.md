@@ -49,8 +49,6 @@ background: https://i.ibb.co/khMnPgg/killarney.jpg
   <img src="https://raw.githubusercontent.com/ScDor/pyconil25/refs/heads/main/qr.png" alt="QR Code" class="w-100 h-100" />
 </div>
 
-<br>
-
 ## [/in/dor-schwartz](https://www.linkedin.com/in/dor-schwartz/)
 
 ---
