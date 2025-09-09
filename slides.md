@@ -44,7 +44,7 @@ src: ./slides/considerations.md
 layout: cover
 background: https://i.ibb.co/khMnPgg/killarney.jpg
 ---
-
+`
 <div class="flex justify-center">
   <img src="./qr-code.png" alt="QR Code" class="w-100 h-100" />
 </div>
