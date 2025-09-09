@@ -40,3 +40,17 @@ src: ./slides/boltons.md
 ---
 src: ./slides/considerations.md
 ---
+---
+layout: cover
+background: https://i.ibb.co/khMnPgg/killarney.jpg
+---
+
+<div class="flex justify-center">
+  <img src="/qr-code.png" alt="QR Code" class="w-100 h-100" />
+</div>
+
+<br>
+
+## [/in/dor-schwartz](https://www.linkedin.com/in/dor-schwartz/)
+
+---
