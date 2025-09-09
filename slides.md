@@ -46,7 +46,7 @@ background: https://i.ibb.co/khMnPgg/killarney.jpg
 ---
 `
 <div class="flex justify-center">
-  <img src="./qr-code.png" alt="QR Code" class="w-100 h-100" />
+  <img src="https://raw.githubusercontent.com/ScDor/pyconil25/refs/heads/main/qr.png" alt="QR Code" class="w-100 h-100" />
 </div>
 
 <br>
